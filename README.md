@@ -3,7 +3,7 @@ This project contains SQL practice queries built on a sample **Insurance Databas
 with `Customers`, `Policies`, and `Claims` tables
 
 ### Files
-- Included SQL queries from Beginner - Intermediate
+- Included SQL queries from Beginner,Intermediate, and Advanced
 
 ### Topics Covered
 - SELECT, WHERE, GROUP BY, HAVING
