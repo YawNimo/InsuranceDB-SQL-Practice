@@ -9,4 +9,4 @@ with `Customers`, `Policies`, and `Claims` tables
 - SELECT, WHERE, GROUP BY, HAVING
 - Aggregate functions (SUM, AVG, COUNT)
 - JOINs
-- Advanced queries (ranking, summary reports)
+- Advanced queries 
