@@ -45,55 +45,55 @@ INSERT INTO Claims (policy_id,claim_date,claim_amount,claim_status) VALUES
 
 -- Beginner Queries
 
--- 1. List all customers who live in Hartford.
+-- List all customers who live in Hartford.
 SELECT *
 FROM customers
 WHERE city = 'Hartford';
 
---Show all policies and their policy types.
+-- Show all policies and their policy types.
 SELECT policy_id, policy_type
 FROM Policies;
 
---Find all claims made in 2023.
+-- Find all claims made in 2023.
 SELECT *
 FROM claims
 WHERE claim_date BETWEEN "2023-01-01" AND "2023-12-31";
 
---Show the names and ages of customers older than 40.
+-- Show the names and ages of customers older than 40.
 SELECT first_name,last_name,age
 FROM customers
 WHERE age > 40;
 
---Count how many customers are stored in the database.
+-- Count how many customers are stored in the database.
 SELECT COUNT(*)
 FROM customers;
 
 
 -- Intermediate Queries
 
--- 6. Find the average premium across all policies.
+-- Find the average premium across all policies.
 SELECT AVG(premium)
 FROM Policies;
 
--- 7. Count how many policies each customer holds.
+-- Count how many policies each customer holds.
 SELECT customer_id, COUNT(policy_id) AS total_policies
 FROM Policies
 GROUP BY customer_id;
 
--- 8. Show the top 3 largest claims (by claim amount).
+-- Show the top 3 largest claims (by claim amount).
 SELECT claim_id, claim_amount
 FROM Claims
 ORDER BY claim_amount DESC
 LIMIT 3;
 
--- 9. List all customers who do not have any claims.
+-- List all customers who do not have any claims.
 SELECT c.first_name, c.last_name
 FROM Customers c
 LEFT JOIN Policies p ON c.customer_id = p.customer_id
 LEFT JOIN Claims cl ON p.policy_id = cl.policy_id
 WHERE cl.claim_id IS NULL;
 
--- 10. Find the total claim amount for each customer.
+-- Find the total claim amount for each customer.
 SELECT c.first_name, c.last_name, SUM(cl.claim_amount) AS total_claims
 FROM Customers c
 JOIN Policies p ON c.customer_id = p.customer_id
@@ -102,7 +102,7 @@ GROUP BY c.first_name, c.last_name;
 
 -- Advanced Queries
 
--- 11. Find the city with the highest total claim amount.
+-- Find the city with the highest total claim amount.
 SELECT c.city, SUM(cl.claim_amount) AS total_claims
 FROM Customers c
 JOIN Policies p ON c.customer_id = p.customer_id
@@ -111,7 +111,7 @@ GROUP BY c.city
 ORDER BY total_claims DESC
 LIMIT 1;
 
--- 12. Show customers who have more than one claim.
+-- Show customers who have more than one claim.
 SELECT c.customer_id, COUNT(cl.claim_id) AS claim_count
 FROM Customers c
 JOIN Policies p ON c.customer_id = p.customer_id
@@ -119,7 +119,7 @@ JOIN Claims cl ON p.policy_id = cl.policy_id
 GROUP BY c.customer_id
 HAVING COUNT(cl.claim_id) > 1;
 
--- 13. Find policies that have never had a claim filed.
+-- Find policies that have never had a claim filed.
 SELECT p.policy_id
 FROM Policies p
 LEFT JOIN Claims cl ON p.policy_id = cl.policy_id
